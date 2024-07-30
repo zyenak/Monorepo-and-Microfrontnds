@@ -1,0 +1,22 @@
+{
+  "name": "monorepo",
+  "private": true,
+  "workspaces": [
+    "api-gateway",
+    "services/*",
+    "frontend/react-books",
+    "frontend/streamlit-user"
+  ],
+  "scripts": {
+    "start:gateway": "npm run start --workspace api-gateway",
+    "start:user-service": "npm run start --workspace services/user-service",
+    "start:book-service": "npm run start --workspace services/book-service",
+    "start:react-frontend": "npm start --prefix frontend/react-books",
+    "start:streamlit-frontend": "streamlit run frontend/streamlit-user/app.py",
+    "start:all": "concurrently \"npm run start --workspace services/user-service\" \"npm run start --workspace services/book-service\" \"npm run start:gateway\" "
+  },
+  "devDependencies": {
+    "concurrently": "^7.2.0",
+    "ts-node-dev": "^2.0.0"
+  }
+}

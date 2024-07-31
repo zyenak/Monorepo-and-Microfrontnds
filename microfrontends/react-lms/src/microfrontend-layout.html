@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Single SPA Navigation</title>
+  <script src="https://cdn.jsdelivr.net/npm/single-spa@5.9.0/lib/system/single-spa.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/systemjs@6.8.3/dist/system.min.js"></script>
+</head>
+<body>
+  <single-spa-router>
+    <nav>
+      <!-- NavLinks for navigation -->
+       <h1>Library Management System</h1>
+      <a href="/login" id="navToLogin">Login</a>
+      <a href="/books" id="navToBooks">Books</a>
+    </nav>
+
+    <main>
+      <!-- Define routes and applications -->
+      <route path="/login">
+        <application name="@react-user/react-user"></application>
+      </route>
+      <route path="/books">
+        <application name="@numetrics/react-books"></application>
+      </route>
+      
+    </main>
+  </single-spa-router>
+
+  <script>
+    // Ensure the Single SPA library is loaded
+    System.import('single-spa').then(() => {
+      // Use single-spa's built-in functionality to handle route changes
+      singleSpa.start();
+    });
+  </script>
+</body>
+</html>

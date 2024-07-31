@@ -4,8 +4,7 @@
   "workspaces": [
     "api-gateway",
     "services/*",
-    "frontend/react-books",
-    "frontend/streamlit-user"
+    "frontend/*"
   ],
   "scripts": {
     "start:gateway": "npm run start --workspace api-gateway",
